@@ -1,0 +1,7 @@
+
+/**
+ * @author pokem
+ *
+ */
+module Algorithm {
+}
