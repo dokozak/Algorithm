@@ -10,15 +10,28 @@ public class initiator {
 	private static MergeSort<Integer> mergeSort = new MergeSort<Integer>();
 	
 	public static void main(String[] args) {
-		//Integer[] list = {7, 1, 44, 666, 2, 4, 6, 8, 11};
+		
+		//mergeSort();
+		//bubbleSort();
+	}
+	
+	
+	private static void mergeSort() {
+		//List of the number
 		ArrayList <Integer> list2 = getArrayList();
-		
-		
-		//list2 = mergeSort.sorting(list2);
-		//bubbleSort.sorting(list);
-		
-		//comprobeTheResult(list);
+		//Method of sorting
+		list2 = mergeSort.sorting(list2);
+		//Result
 		comprobeTheResultArrayList(list2);
+	}
+	
+	private static void bubbleSort() {
+		//List of the number
+		Integer[] list = {7, 1, 44, 666, 2, 4, 6, 8, 11};
+		//Method of sorting
+		bubbleSort.sorting(list);
+		//Result
+		comprobeTheResult(list);
 	}
 	
 	
