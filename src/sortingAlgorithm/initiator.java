@@ -8,13 +8,23 @@ public class initiator {
 	//Type of sorting
 	private static BubbleSort<Integer> bubbleSort = new BubbleSort<Integer>();
 	private static MergeSort<Integer> mergeSort = new MergeSort<Integer>();
+	private static QuickSort<Integer> quickSort = new QuickSort<Integer>();
 	
 	public static void main(String[] args) {
-		
+		quickSort();
 		//mergeSort();
 		//bubbleSort();
+		
 	}
 	
+	private static void quickSort() {
+		//List of the number
+		ArrayList <Integer> list2 = getArrayList();
+		//Method of sorting
+		list2 = quickSort.sorting(list2);
+		//Result
+		comprobeTheResultArrayList(list2);
+	}
 	
 	private static void mergeSort() {
 		//List of the number
