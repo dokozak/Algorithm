@@ -1,7 +1,12 @@
 package sortingAlgorithm;
 
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author Jorge Navarro Martinez
+ *
+ * @param <T> The value to be order
+ */
 public class MergeSort<T extends Comparable<T>> {
 
 	/**
