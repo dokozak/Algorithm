@@ -17,9 +17,9 @@ public class QuickSort<T extends Comparable<T>> {
 	 */
 	public ArrayList<T> sorting(ArrayList<T> list) {
 		// The last value of the list
-		int pivot;
+		T pivot;
 		// Create the list right, left and result.
-		ArrayList<T> left = new ArrayList<>(), right = new ArrayList<>(), result = new ArrayList<>();
+		ArrayList<T> left = new ArrayList<>(), right = new ArrayList<>(), result;
 		// If the list only have a element break the recurrence
 		if (list.size() <= 1)
 
@@ -27,12 +27,12 @@ public class QuickSort<T extends Comparable<T>> {
 
 		else {
 			// Get the last position
-			pivot = list.size() - 1;
+			pivot = list.get(list.size() - 1);
 			// Compare all values ​​of the list and add value to left list if the value is
 			// equals or lower than the last value, or add the value to right list if the
 			// value is higher than the last value
 			for (int x = 0; x < list.size() - 1; x++) {
-				if (list.get(x).compareTo(list.get(pivot)) <= 0) {
+				if (list.get(x).compareTo(pivot) <= 0) {
 					left.add(list.get(x));
 				} else {
 					right.add(list.get(x));
@@ -43,15 +43,9 @@ public class QuickSort<T extends Comparable<T>> {
 			right = sorting(right);
 
 			//Add values ​​to the result list in this order to create an ordered list
-			for (int x = 0; x < left.size(); x++) {
-				result.add(left.get(x));
-			}
-
-			result.add(list.get(pivot));
-
-			for (int x = 0; x < right.size(); x++) {
-				result.add(right.get(x));
-			}
+			result = new ArrayList<>(left);
+			result.add(pivot);
+			result.addAll(right);
 
 			//Return the result
 			return result;
