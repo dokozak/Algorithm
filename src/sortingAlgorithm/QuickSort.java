@@ -9,46 +9,50 @@ import java.util.ArrayList;
  * @param <T> The value to be order
  */
 public class QuickSort<T extends Comparable<T>> {
-
 	/**
 	 * This method sorting the list with using the algorithm QuickSort
 	 * 
 	 * @param list - list of the elements who be sorting
 	 */
-	public ArrayList<T> sorting(ArrayList<T> list) {
-		// The last value of the list
-		T pivot;
-		// Create the list right, left and result.
-		ArrayList<T> left = new ArrayList<>(), right = new ArrayList<>(), result;
-		// If the list only have a element break the recurrence
-		if (list.size() <= 1)
+	public void sorting(T[] list, int start, int end) {
 
-			return list;
+		// If start and end is the same number end the recurrence
+		if (start >= end)
+
+			return;
 
 		else {
-			// Get the last position
-			pivot = list.get(list.size() - 1);
-			// Compare all values ​​of the list and add value to left list if the value is
-			// equals or lower than the last value, or add the value to right list if the
-			// value is higher than the last value
-			for (int x = 0; x < list.size() - 1; x++) {
-				if (list.get(x).compareTo(pivot) <= 0) {
-					left.add(list.get(x));
-				} else {
-					right.add(list.get(x));
+			// Get the last value
+			T finalValue = list[end];
+			// Get first movement value
+			int movementValue = start;
+			// I save a value with this value
+			T valueBox;
+			// Compare the final value with actual value, if is less than final value change
+			// actual value with movement value
+			for (int x = movementValue; x < end; x++) {
+
+				if (list[x].compareTo(finalValue) <= 0) {
+					//Change the value and change the movementValue
+					valueBox = list[x];
+					list[x] = list[movementValue];
+					list[movementValue] = valueBox;
+					movementValue++;
+
 				}
+
 			}
-			//Create recurrence to get sorted values
-			left = sorting(left);
-			right = sorting(right);
 
-			//Add values ​​to the result list in this order to create an ordered list
-			result = new ArrayList<>(left);
-			result.add(pivot);
-			result.addAll(right);
+			//Change the final value with movement value
+			list[end] = list[movementValue];
+			list[movementValue] = finalValue;
 
-			//Return the result
-			return result;
+			// Sorting the left part of the list
+			sorting(list, start, movementValue - 1);
+
+			// Sorting the right part of the list
+			sorting(list, movementValue + 1, end);
+
 		}
 	}
 
